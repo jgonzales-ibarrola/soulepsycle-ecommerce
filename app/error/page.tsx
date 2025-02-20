@@ -1,13 +1,17 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { redirect, useSearchParams } from 'next/navigation'
-import React from 'react'
+import { redirect } from 'next/navigation'
+import React, { use } from 'react'
 
-const ErrorPage = () => {
-  const searchParams = useSearchParams()
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
+
+const ErrorPage = (props: {
+  searchParams: SearchParams
+}) => {
  
-  const message = searchParams.get('message')
+  const searchParams = use(props.searchParams)
+  const message = searchParams.message;
 
   function handleRedirect() {
     redirect('/')
