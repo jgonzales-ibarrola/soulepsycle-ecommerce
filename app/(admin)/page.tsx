@@ -3,6 +3,7 @@ import React from "react";
 import supabase from "@/lib/supabase";
 import AddNewProduct from "@/components/AddNewProduct";
 import RealTimeData from "@/components/RealTimeData";
+import LogoutButton from "./components/LogoutButton";
 
 const HomePage = async () => {
 	const { data: products, error } = await supabase
@@ -23,7 +24,7 @@ const HomePage = async () => {
 		<div>
 			<h1 className="text-4xl font-bold">Hello World!</h1>
 			<RealTimeData data={products} />
-
+			<LogoutButton />
       <AddNewProduct />
 		</div>
 	);
